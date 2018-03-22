@@ -10,21 +10,34 @@ Nota: un ejemplo de visualización de una sección de la sala es el siguiente:
 
 Donde + representa los asientos reservados y - representa los asientos disponibles.*/
 using namespace std;
-char** crearmatrix(int,int);
-void print_matrix(char **, int, int);
-void reservarpuesto(char **,char, int);
+char** crearmatrix(int,int);//funcion para crear la matriz de los puestos
+void print_matrix(char **, int, int);//funcion para imprimir la matriz
+void reservarpuesto(char **,char, int,char);//funcion que reserva un puesto
+int decicionmenu();//funcion que hace el menu de el programa
 int main()
-{   int filas=15,columnas=20,ncolumna=0;
-    char nfila;
+{   int filas=15,columnas=20,ncolumna=0,opcion;
+    char nfila, decicion;
     char **matrix=crearmatrix(filas,columnas);
-    print_matrix(matrix,filas,columnas);
+    while(true){
+    opcion=decicionmenu();
+    if(opcion==1){
+    print_matrix(matrix,filas,columnas);}
+    if(opcion==2){
+    cout <<"desea asiganr o cancelar un puesto para esto ingrese + para asignar y - para cancelar: ";
+    cin >>decicion;
     cout <<"letra de fila: ";
     cin >>nfila;
     cout <<"numero columna: ";
     cin >>ncolumna;
 
-    reservarpuesto(matrix,nfila,ncolumna);
-    print_matrix(matrix,filas,columnas);
+    reservarpuesto(matrix,nfila,ncolumna,decicion);
+    print_matrix(matrix,filas,columnas);}
+    if(opcion==3)
+        break;
+    else
+        cout <<"OPCION NO VALIDA"<<endl;
+    }
+
     return 0;
 }
 char** crearmatrix(int filas,int columnas){
@@ -54,7 +67,8 @@ void print_matrix(char **matriz, int filas, int columnas){
         cout << endl;
     }
 }
-void reservarpuesto(char **matriz,char a, int b){
+void reservarpuesto(char **matriz,char a, int b,char l){
+   if(l=='-'||l=='+'){
     switch (a) {
     case 'A':
         if(b>0&&b<20)
@@ -64,94 +78,94 @@ void reservarpuesto(char **matriz,char a, int b){
         break;
     case 'B':
         if(b>0&&b<20)
-            *(*(matriz+1)+(b-1))='+';
+            *(*(matriz+1)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'C':
         if(b>0&&b<20)
-        *(*(matriz+2)+(b-1))='+';
+        *(*(matriz+2)+(b-1))=l;
         else
             cout<<"columna incorrecta"<<endl;
         break;
     case 'D':
         if(b>0&&b<20)
-            *(*(matriz+3)+(b-1))='+';
+            *(*(matriz+3)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'E':
         if(b>0&&b<20)
-            *(*(matriz+4)+(b-1))='+';
+            *(*(matriz+4)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'F':
         if(b>0&&b<20)
-        *(*(matriz+5)+(b-1))='+';
+        *(*(matriz+5)+(b-1))=l;
         else
             cout<<"columna incorrecta"<<endl;
         break;
     case 'G':
         if(b>0&&b<20)
-            *(*(matriz+6)+(b-1))='+';
+            *(*(matriz+6)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'H':
         if(b>0&&b<20)
-            *(*(matriz+7)+(b-1))='+';
+            *(*(matriz+7)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'I':
         if(b>0&&b<20)
-            *(*(matriz+8)+(b-1))='+';
+            *(*(matriz+8)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'J':
         if(b>0&&b<20)
-            *(*(matriz+9)+(b-1))='+';
+            *(*(matriz+9)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'K':
         if(b>0&&b<20)
-            *(*(matriz+10)+(b-1))='+';
+            *(*(matriz+10)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'L':
         if(b>0&&b<20)
-            *(*(matriz+11)+(b-1))='+';
+            *(*(matriz+11)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
         break;
     case 'M':
         if(b>0&&b<20)
-        *(*(matriz+12)+(b-1))='+';
+        *(*(matriz+12)+(b-1))=l;
         else
             cout<<"columna incorrecta"<<endl;
         break;
     case 'N':
         if(b>0&&b<20)
-        *(*(matriz+13)+(b-1))='+';
+        *(*(matriz+13)+(b-1))=l;
         else
             cout<<"columna incorrecta"<<endl;
         break;
     case 'O':
         if(b>0&&b<20)
-            *(*(matriz+14)+(b-1))='+';
+            *(*(matriz+14)+(b-1))=l;
             else
                 cout<<"columna incorrecta"<<endl;
 
@@ -160,7 +174,15 @@ void reservarpuesto(char **matriz,char a, int b){
     default:cout<<"fila incorrecta "<<endl;
 
         break;
+        }
+
     }
-
-
+   else
+       cout << "caracter invalido"<<endl;
+}
+int decicionmenu(){
+    cout <<"desea ver los puestos dsiponibles ingrese 1."<<endl<<"desea hacer una cancelacion o una asigancion ingrese 2."<<endl<<"desea salir ingrese 3."<<endl;
+    int quehacer=0;
+    cin >>quehacer;
+    return quehacer;
 }
