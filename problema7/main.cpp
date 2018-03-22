@@ -7,11 +7,12 @@ void repetidos(char *, char *nuevo);
 int main()
 {
     char nuevo[100];
-    cout<<"ingrese la palabra  ";
-    cin.getline(nuevo,100);
+    cout<<"ingrese la palabra:  ";
+    cin>>nuevo;
     char a[100];
     repetidos(nuevo, a);
-    cout << a << endl;
+    cout <<"original: "<< nuevo << endl;
+    cout <<"sin repetidos: "<< a << endl;
     return 0;
 }
 void repetidos(char *nuevo, char *a){
@@ -32,6 +33,10 @@ void repetidos(char *nuevo, char *a){
           if(repetido==0){
               *(a+cierto)=nuevo[i];
               cierto++;
+
           }
+    if(nuevo[i]==nuevo[contador])
+        break;
     }
+
 }
