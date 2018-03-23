@@ -22,7 +22,7 @@ int main()
     opcion=decicionmenu();
     if(opcion==1){
     print_matrix(matrix,filas,columnas);}
-    if(opcion==2){
+    else if(opcion==2){
     cout <<"desea asiganr o cancelar un puesto para esto ingrese + para asignar y - para cancelar: ";
     cin >>decicion;
     cout <<"letra de fila: ";
@@ -32,10 +32,10 @@ int main()
 
     reservarpuesto(matrix,nfila,ncolumna,decicion);
     print_matrix(matrix,filas,columnas);}
-    if(opcion==3)
+    else if(opcion==3)
         break;
-    else
-        cout <<"OPCION NO VALIDA"<<endl;
+    else{
+        cout <<"OPCION NO VALIDA"<<endl;}
     }
 
     return 0;
